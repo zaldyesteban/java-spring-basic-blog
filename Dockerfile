@@ -1,13 +1,21 @@
-FROM codecentric/springboot-maven3-centos:1.4
+FROM maven:3.6-jdk-8-slim
 
-WORKDIR /opt/app-root/src
+WORKDIR /src/app/
 
-COPY --chown=default:root ./pom.xml .
+COPY ./pom.xml .
+
+RUN ["mkdir", "/home/projects"]
+
+RUN groupadd projects && useradd -g projects projects && \
+  chown -R projects:projects /src/app && \
+  chown -R projects:projects /home/projects
+
+USER projects
 
 RUN ["mvn", "clean"]
 
 RUN ["mvn", "de.qaware.maven:go-offline-maven-plugin:resolve-dependencies", "-P", "integration"]
 
-COPY --chown=default:root . .
+COPY --chown=projects:projects . .
 
 ENTRYPOINT ["sh"]
