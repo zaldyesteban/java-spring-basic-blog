@@ -14,8 +14,6 @@ USER projects
 
 RUN ["mvn", "clean"]
 
-RUN ["mvn", "de.qaware.maven:go-offline-maven-plugin:resolve-dependencies", "-P", "integration"]
-
 COPY --chown=projects:projects . .
 
 ENTRYPOINT ["sh"]
