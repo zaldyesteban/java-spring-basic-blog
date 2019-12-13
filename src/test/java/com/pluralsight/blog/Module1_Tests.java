@@ -80,13 +80,13 @@ public class Module1_Tests {
 	@Test
 	public void task_1() {
 		// Task 2(a) - Check if method listPosts() exists
-		assertNotNull("Task 1: Method listPosts() does not exist in BlogController.", method);
+		assertNotNull("Task 1: Method `listPosts()` does not exist in BlogController.", method);
 	}
 
 	@Test
 	public void task_2() {
 		// Task 1
-		assertNotNull("Task 1: Method listPosts() does not exist in BlogController.", method);
+		assertNotNull("Task 1: Method `listPosts()` does not exist in BlogController.", method);
 
 		// Task 2 - Check for @ResponseBody and @RequestMapping Annotations
 		Annotation[] annotations = method.getDeclaredAnnotations();
@@ -99,7 +99,7 @@ public class Module1_Tests {
 				requestMappingExists = true;
 			}
 		}
-		assertTrue("Task 2: @RequestMapping(\"/\") annotation does not exist on listPosts().",
+		assertTrue("Task 2: `@RequestMapping(\"/\")` annotation does not exist in listPosts().",
 				requestMappingExists);
 
 		// TODO Task 2 - Additional test - Check that String "Hello World" is displayed
@@ -109,9 +109,9 @@ public class Module1_Tests {
 	@Test
 	public void task_3() {
 		// Task 3(a)
-		assertNotNull("Task 1: Method listPosts() does not exist in BlogController.", method);
+		assertNotNull("Task 1: Method `listPosts()` does not exist in BlogController.", method);
 		int numParameters = method.getParameterCount();
-		assertTrue("Task 3: listPosts() needs a ModelMap parameter.", numParameters >= 1);
+		assertTrue("Task 3: `listPosts()` needs a `ModelMap` parameter.", numParameters >= 1);
 
 		Class[] classes = method.getParameterTypes();
 		boolean modelMapExists = false;
@@ -120,7 +120,7 @@ public class Module1_Tests {
 				modelMapExists = true;
 		}
 
-		assertTrue("Task 3: listPosts() needs a ModelMap parameter.", modelMapExists);
+		assertTrue("Task 3: `listPosts()` needs a `ModelMap` parameter.", modelMapExists);
 
 		// Task 3(b) - Verify modelMap.put() is called
 		ModelMap modelMap = Mockito.mock(ModelMap.class);
@@ -143,7 +143,7 @@ public class Module1_Tests {
 			////e.printStackTrace();
 		}
 
-		assertTrue("Task 3: Did not call put() on the ModelMap with a key of \"title\" and \"Blog Post 1\"",
+		assertTrue("Task 3: Did not call `put()` on the `ModelMap` with a key of `\"title\"` and `\"Blog Post 1\"`",
 				putCalledCorrectly);
 	}
 
@@ -168,10 +168,10 @@ public class Module1_Tests {
 
 		Elements h2Elements = doc.getElementsByTag("h2");
 
-		assertTrue("Task 4: An <h2> tag does not exist in the home.html template.",
+		assertTrue("Task 4: An `<h2>` tag does not exist in the `home.html` template.",
 				h2Elements.size() > 0);
 
-		assertEquals("Task 4: An <h2> tag does not display the title parameter.",
+		assertEquals("Task 4: An `<h2>` tag does not display the title parameter.",
 				"Blog Post 1", h2Elements.first().html());
 	}
 

@@ -131,10 +131,10 @@ public class Module3_Tests {
             }
         }
 
-        message = "Task 1: The <link> tag does not match - \n" + styleCssStr + " - for our CSS file.";
+        message = "Task 1: The `<link>` tag does not match - \n" + styleCssStr + " - for our CSS file.";
         assertTrue(message, styleCSSOk);
 
-        message = "Task 1: The <link> tag does not match - \n" + bootStrapStr + " - for Bootstrap.";
+        message = "Task 1: The `<link>` tag does not match - \n" + bootStrapStr + " - for Bootstrap.";
         assertTrue(message, bootstrapOk);
 
         // *** Check for Scripts *** //
@@ -152,13 +152,13 @@ public class Module3_Tests {
                 script4 = true;
         }
 
-        message = "Task 1: The <script> tag with src=\"modernizr-2.8.3-respond-1.4.2.min.js\" does not exist.";
+        message = "Task 1: The `<script>` tag with `src=\"modernizr-2.8.3-respond-1.4.2.min.js\"` does not exist.";
         assertTrue(message, script1);
-        message = "Task 1: The <script> tag with src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" does not exist.";
+        message = "Task 1: The `<script>` tag with `src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\"` does not exist.";
         assertTrue(message, script2);
-        message = "Task 1: The <script> tag with src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\" does not exist.";
+        message = "Task 1: The `<script>` tag with `src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js\"` does not exist.";
         assertTrue(message, script3);
-        message = "Task 1: The <script> tag with src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\" does not exist.";
+        message = "Task 1: The `<script>` tag with `src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"` does not exist.";
         assertTrue(message, script4);
     }
 
@@ -172,12 +172,12 @@ public class Module3_Tests {
 
         Elements divElements = doc.getElementsByClass("card-body");
 
-        message = "Task 2: A <div class=\"card-body\"> tag does not exist in the home.html template.";
+        message = "Task 2: A `<div class=\"card-body\">` tag does not exist in the home.html template.";
         assertTrue(message,
                 divElements.size() > 0);
 
         // Task 8 - Verify <div class="card-body"> shows up 5 times
-        message = "Task 2: The <div> tag with class \"card-body\" should appear "+ALL_POSTS.size()+" times.";
+        message = "Task 2: The `<div>` tag with class `\"card-body\"` should appear "+ALL_POSTS.size()+" times.";
         assertEquals(message, ALL_POSTS.size(), divElements.size());
     }
 
@@ -187,16 +187,16 @@ public class Module3_Tests {
         assertNotNull(message, doc);
 
         Elements divElements = doc.getElementsByClass("card-subtext");
-        message = "Task 3: A <div> tag with class \"card-subtext\" does not exist in the home.html template.";
+        message = "Task 3: A `<div>` tag with class `\"card-subtext\"` does not exist in the home.html template.";
         assertTrue(message,
                 divElements.size() > 0);
 
-        message = "Task 3: The <div> tag should appear 5 times total.But it only appears " + divElements.size() + " times.";
+        message = "Task 3: The `<div>` tag should appear 5 times total. But it only appears " + divElements.size() + " times.";
         assertEquals(message, ALL_POSTS.size(), divElements.size());
 
         for (int i = 0; i < divElements.size(); i++) {
             Element element = divElements.get(i);
-            message = "Task 3: The <div class=\"card-subtext\"> tag child tag is: \"" + element.html() + "\" instead of <a href=\"/#\">" + ALL_POSTS.get(i).getAuthor() + "</a>.";
+            message = "Task 3: The `<div class=\"card-subtext\">` tag child tag is: \"" + element.html() + "\" instead of <a href=\"/#\">" + ALL_POSTS.get(i).getAuthor() + "</a>.";
             assertEquals(message, "<a href=\"/#\">"+ALL_POSTS.get(i).getAuthor()+"</a>", element.html());
         }
     }
@@ -210,12 +210,12 @@ public class Module3_Tests {
 
         Elements divElements = doc.getElementsByClass("navbar-brand");
 
-        message = "Task 4: An <a class=\"navbar-brand\"> tag is not substituted into the home.html template.";
+        message = "Task 4: An `<a class=\"navbar-brand\">` tag is not substituted into the home.html template.";
         assertTrue(message,
                 divElements.size() > 0);
 
         // Task 8 - Verify <div class="card-body"> shows up 5 times
-        message = "Task 4: The <a> tag with class \"navbar-brand\" should appear 1 time.";
+        message = "Task 4: The `<a>` tag with class `\"navbar-brand\"` should appear 1 time.";
         assertEquals(message, 1, divElements.size());
     }
 

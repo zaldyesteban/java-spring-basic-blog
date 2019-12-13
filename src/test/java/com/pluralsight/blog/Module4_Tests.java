@@ -138,7 +138,7 @@ public class Module4_Tests {
 
         Elements linkElements = doc.getElementsByClass("post-url");
 
-        assertTrue("Task 1: Anchor tags with class \"post-url\" do not exist.", linkElements.size()>0);
+        assertTrue("Task 1: `<a>` tags with class \"post-url\" do not exist.", linkElements.size()>0);
 
         boolean anchorTagsExist = true;
         String url = "";
@@ -156,13 +156,13 @@ public class Module4_Tests {
             //j+=2;
         }
 
-        message = "Task 1: The <a> tag's href is - " + url + " - not - " + wanted + " - .";
+        message = "Task 1: The `<a>` tag's href is - " + url + " - not - " + wanted + " - .";
         assertTrue(message, anchorTagsExist);
     }
 
     @Test
     public void task_2() {
-        String message = "Task 2: The method `public String postDetails(Long id, ModelMap map)` does not exist in BlogController.";
+        String message = "Task 2: The method `public String postDetails(@PathVariable Long id, ModelMap map)` does not exist in BlogController.";
         assertNotNull(message, method);
 
         // TODO verify post-details template is displayed
@@ -182,17 +182,17 @@ public class Module4_Tests {
 
     @Test
     public void task_3() {
-        String message = "Task 3: The method `public String postDetails(Long id, ModelMap map)` does not exist in BlogController.";
+        String message = "Task 3: The method `public String postDetails(@PathVariable Long id, ModelMap map)` does not exist in BlogController.";
         assertNotNull(message, method);
 
         // Verify the method has @RequestMapping
         Annotation[] annotations = method.getDeclaredAnnotationsByType(RequestMapping.class);
 
         assertNotNull(annotations);
-        assertTrue("Task 3: There are no annotation on the postDetails() method.", annotations.length >= 1);
+        assertTrue("Task 3: There are no annotation on the `postDetails()` method.", annotations.length >= 1);
 
-        assertTrue("Task 3: The @RequestMapping annotation doesn't have the value \"/post/{id}\".",
-                annotations[0].toString().contains("value={\"/post/{id}\"}"));
+        assertTrue("Task 3: The `@RequestMapping` annotation doesn't have the value `\"/post/{id}\"`.",
+                annotations[0].toString().contains("value={\"/post/{id}\"}") || annotations[0].toString().contains("value=[/post/{id}]"));
     }
 
     @Test
@@ -205,11 +205,11 @@ public class Module4_Tests {
         } catch (Exception e) {
             //e.printStackTrace();
         }
-        String message = "Task 4: The method findById() does not exist in the PostRepository class.";
+        String message = "Task 4: The method `findById()` does not exist in the PostRepository class.";
         assertNotNull(message, findMethod);
 
         List<Post> posts = spyRepository.getAllPosts();
-        message = "Task 4: The method getAllPosts() does not exist in the PostRepository class.";
+        message = "Task 4: The method `getAllPosts()` does not exist in the PostRepository class.";
         assertNotNull(message, posts);
 
         Post tempPost = null;
@@ -222,7 +222,7 @@ public class Module4_Tests {
             //e.printStackTrace();
         }
 
-        message = "Task 4: The method findById() does not return the correct Post.";
+        message = "Task 4: The method `findById()` does not return the correct Post.";
         assertEquals(message, tempPost, post);
 
     }
@@ -257,7 +257,7 @@ public class Module4_Tests {
             //e.printStackTrace();
         }
 
-        String message = "Task 5: Did not call PostRepository's findById() method in BlogController.";
+        String message = "Task 5: Did not call PostRepository's `findById()` method in BlogController.";
         assertTrue(message, calledFind);
     }
 
@@ -281,7 +281,7 @@ public class Module4_Tests {
             //e.printStackTrace();
         }
 
-        String message = "Task 6: Did not call ModelMap's put method with the Post.";
+        String message = "Task 6: Did not call ModelMap's `put()` method with the Post.";
         assertTrue(message, calledPut);
     }
 
@@ -307,22 +307,22 @@ public class Module4_Tests {
 
 
         Elements h3Elements = doc.getElementsByTag("h3");
-        message = "The <h3> tags for author and date do not exist in the post-details.html template.";
+        message = "The `<h3>` tags for author and date do not exist in the post-details.html template.";
         assertTrue(message,h3Elements.size() >= 2);
         Element h3Elem = h3Elements.get(0);
-        assertNotNull("Task 7: The template doesn't have an <h3> tag.", h3Elem);
+        assertNotNull("Task 7: The template doesn't have an `<h3>` tag.", h3Elem);
 
         boolean h3CorrectText = h3Elem.text().contains("Sarah Holderness");
 
-        message = "Task 7: The first post's first <h3> tag should display Sarah Holderness as the author.";
+        message = "Task 7: The first post's first `<h3>` tag should display `Sarah Holderness` as the author.";
         assertTrue(message, h3CorrectText);
 
         h3Elem = h3Elements.get(1);
-        assertNotNull("Task 7: The template doesn't have a second <h3> tag.", h3Elem);
+        assertNotNull("Task 7: The template doesn't have a second `<h3>` tag.", h3Elem);
 
         h3CorrectText = h3Elem.text().contains(ALL_POSTS.get(0).getDateStr());
 
-        message = "Task 7: The first post's second <h3> tag should display" + ALL_POSTS.get(0).getDateStr() + " as the date.";
+        message = "Task 7: The first post's second `<h3>` tag should display" + ALL_POSTS.get(0).getDateStr() + " as the date.";
         assertTrue(message, h3CorrectText);
 
     }
@@ -350,7 +350,7 @@ public class Module4_Tests {
 
         Elements divElements = doc.getElementsByClass("col-md-8 post-body");
 
-        message = "The <div class=\"col-md-8 post-body\"> tag for the body does not exist in the post-details.html template.";
+        message = "The `<div class=\"col-md-8 post-body\">` tag for the body does not exist in the post-details.html template.";
         assertTrue(message,
                 divElements.size() == 1);
 
